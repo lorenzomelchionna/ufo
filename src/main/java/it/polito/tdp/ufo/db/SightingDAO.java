@@ -22,7 +22,7 @@ public class SightingDAO {
 		
 			PreparedStatement st = conn.prepareStatement(sql);
 			
-			ResultSet res = st.executeQuery(sql);
+			ResultSet res = st.executeQuery();
 		
 			List<String> FormeUFO = new ArrayList<>();
 		
@@ -51,10 +51,9 @@ public class SightingDAO {
 			Connection conn = DBConnect.getConnection();
 			
 			String sql2 = "SELECT COUNT(*) AS cnt FROM sighting WHERE shape = ? ";
-			String shapeScelta = "circle";
 			
 			PreparedStatement st2 = conn.prepareStatement(sql2);
-			st2.setString(1, shapeScelta);
+			st2.setString(1, shape);
 			
 			ResultSet res2 = st2.executeQuery();
 			res2.first();
